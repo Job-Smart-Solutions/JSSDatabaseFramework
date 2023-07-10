@@ -1,0 +1,72 @@
+apply plugin: 'java'
+
+println "Building JSS Database Framework..."
+
+group 'jss.database'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+configurations {
+	// configuration that holds jars to include in the jar
+	extraLibs
+}
+
+repositories {
+	mavenCentral() 
+	jcenter()
+}
+
+dependencies {
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.9.1'
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.1'
+	testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.9.1'
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.9.1'
+
+	// https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.1.4'
+	extraLibs group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '3.1.4'
+	
+	// https://mvnrepository.com/artifact/org.postgresql/postgresql
+	implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
+	extraLibs group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
+	
+	// https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc
+	implementation group: 'org.xerial', name: 'sqlite-jdbc', version: '3.42.0.0'
+	extraLibs group: 'org.xerial', name: 'sqlite-jdbc', version: '3.42.0.0'
+
+	//implementation fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
+	//extraLibs fileTree(dir: 'WebContent/WEB-INF/lib', include: ['*.jar'])
+}
+
+buildDir = 'bin'
+
+sourceSets {
+	main {
+		java {
+			srcDirs = ['src']
+		}
+		resources {
+			srcDirs = ['res']
+		}
+	}
+	test {
+		java {
+			srcDirs = ['test']
+		}
+	}
+}
+
+jar {
+	from {
+		configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+	}
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
