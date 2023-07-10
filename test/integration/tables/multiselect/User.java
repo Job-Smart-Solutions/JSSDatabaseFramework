@@ -4,10 +4,10 @@ import java.util.Objects;
 
 import org.junit.Ignore;
 
-import lukas.database.annotations.DbField;
-import lukas.database.annotations.DbOneToOne;
-import lukas.database.annotations.DbPrimaryKey;
-import lukas.database.annotations.DbTable;
+import jss.database.annotations.DbField;
+import jss.database.annotations.DbOneToOne;
+import jss.database.annotations.DbPrimaryKey;
+import jss.database.annotations.DbTable;
 
 /**
  * Użytkownik

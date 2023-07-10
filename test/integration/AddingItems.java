@@ -18,10 +18,10 @@ import integration.tables.NumberTable;
 import integration.tables.TableWithIndexes;
 import integration.tables.TableWithIndexes2;
 import integration.tables.TextTable;
-import lukas.database.DataSaver;
-import lukas.database.Database;
-import lukas.database.DatabaseConfig;
-import lukas.database.DatabaseException;
+import jss.database.DataSaver;
+import jss.database.Database;
+import jss.database.DatabaseConfig;
+import jss.database.DatabaseException;
 
 @Ignore
 public class AddingItems {

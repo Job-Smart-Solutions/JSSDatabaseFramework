@@ -17,11 +17,11 @@ import integration.tables.multiselect.ItemPhoto;
 import integration.tables.multiselect.Photo;
 import integration.tables.multiselect.User;
 import integration.tables.multiselect.UserAddInfo;
-import lukas.database.Database;
-import lukas.database.DatabaseConfig;
-import lukas.database.DatabaseException;
-import lukas.database.MultiSelectQuery;
-import lukas.database.SelectQuery;
+import jss.database.Database;
+import jss.database.DatabaseConfig;
+import jss.database.DatabaseException;
+import jss.database.MultiSelectQuery;
+import jss.database.SelectQuery;
 
 @Ignore
 public class MultiSelectTest {

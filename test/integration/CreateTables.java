@@ -2,9 +2,9 @@ package integration;
 
 import org.junit.Ignore;
 
-import lukas.database.Database;
-import lukas.database.DatabaseConfig;
-import lukas.database.DatabaseException;
+import jss.database.Database;
+import jss.database.DatabaseConfig;
+import jss.database.DatabaseException;
 
 /**
  * Test tworzenia tabel

@@ -8,10 +8,10 @@ import integration.views.MultiSelectView;
 import integration.views.MultiSelectView2;
 import integration.views.MultiSelectView3;
 import integration.views.MultiSelectView4;
-import lukas.database.Database;
-import lukas.database.DatabaseConfig;
-import lukas.database.DatabaseException;
-import lukas.database.ViewQuery;
+import jss.database.Database;
+import jss.database.DatabaseConfig;
+import jss.database.DatabaseException;
+import jss.database.ViewQuery;
 
 /**
  * Test SELECT VIEW

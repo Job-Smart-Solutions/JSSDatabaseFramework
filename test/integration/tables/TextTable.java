@@ -2,10 +2,10 @@ package integration.tables;
 
 import org.junit.Ignore;
 
-import lukas.database.annotations.DbField;
-import lukas.database.annotations.DbPrimaryKey;
-import lukas.database.annotations.DbTable;
-import lukas.database.types.SqlType;
+import jss.database.annotations.DbField;
+import jss.database.annotations.DbPrimaryKey;
+import jss.database.annotations.DbTable;
+import jss.database.types.SqlType;
 
 @Ignore
 @DbTable("text_table")

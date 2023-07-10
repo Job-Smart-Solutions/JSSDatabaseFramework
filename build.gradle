@@ -3,7 +3,7 @@ apply plugin: 'java'
 println "Building JSS Database Framework..."
 
 group 'jss.database'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 sourceCompatibility = 1.8
 

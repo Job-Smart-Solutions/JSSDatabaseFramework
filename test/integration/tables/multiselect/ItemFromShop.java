@@ -5,10 +5,10 @@ import java.util.Objects;
 
 import org.junit.Ignore;
 
-import lukas.database.annotations.DbField;
-import lukas.database.annotations.DbForeignKey;
-import lukas.database.annotations.DbPrimaryKey;
-import lukas.database.annotations.DbTable;
+import jss.database.annotations.DbField;
+import jss.database.annotations.DbForeignKey;
+import jss.database.annotations.DbPrimaryKey;
+import jss.database.annotations.DbTable;
 
 /**
  * Towar ze sklepu - test klasy dodatkowej (drugiej)

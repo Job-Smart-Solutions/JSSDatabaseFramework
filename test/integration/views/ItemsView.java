@@ -5,9 +5,9 @@ import java.util.Objects;
 import org.junit.Ignore;
 
 import integration.tables.multiselect.Item;
-import lukas.database.annotations.DbView;
-import lukas.database.annotations.DbViewField;
-import lukas.database.annotations.DbViewObject;
+import jss.database.annotations.DbView;
+import jss.database.annotations.DbViewField;
+import jss.database.annotations.DbViewObject;
 
 /**
  * Prosty widok towarów

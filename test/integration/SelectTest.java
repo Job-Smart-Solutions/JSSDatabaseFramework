@@ -10,10 +10,10 @@ import integration.tables.NumberTable;
 import integration.tables.TableWithIndexes;
 import integration.tables.TableWithIndexes2;
 import integration.tables.TextTable;
-import lukas.database.Database;
-import lukas.database.DatabaseConfig;
-import lukas.database.DatabaseException;
-import lukas.database.SelectQuery;
+import jss.database.Database;
+import jss.database.DatabaseConfig;
+import jss.database.DatabaseException;
+import jss.database.SelectQuery;
 
 @Ignore
 public class SelectTest {

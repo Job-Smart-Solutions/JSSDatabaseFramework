@@ -7,9 +7,9 @@ import org.junit.Ignore;
 import integration.tables.multiselect.Category;
 import integration.tables.multiselect.Item;
 import integration.tables.multiselect.ItemPhoto;
-import lukas.database.annotations.DbView;
-import lukas.database.annotations.DbViewField;
-import lukas.database.annotations.DbViewObject;
+import jss.database.annotations.DbView;
+import jss.database.annotations.DbViewField;
+import jss.database.annotations.DbViewObject;
 
 @Ignore
 @DbView(name = "multi_view2", query = "SELECT {LISTFIELDS:Item}, {LISTFIELDS:Category}, t.photos_count, {FIELD:Item:id} as item_key_id "
