@@ -5,8 +5,6 @@ import static org.junit.Assert.assertThrows;
 
 import org.junit.Test;
 
-import jss.database.DatabaseConfig;
-import jss.database.DatabaseException;
 import jss.database.annotations.DbTable;
 
 /**

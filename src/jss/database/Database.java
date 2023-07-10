@@ -174,7 +174,7 @@ public class Database {
 			close();
 		} catch (DatabaseException e) {
 			// ignore closing exception, only log
-			log().log(Level.INFO, "Error when closing database connection: " + e.getMessage(), e);
+			log.log(Level.WARNING, "Error when closing database connection: " + e.getMessage(), e);
 		}
 	}
 
@@ -261,7 +261,7 @@ public class Database {
 	 * @throws DatabaseException w przypadku błędu połączenia
 	 */
 	public void reconnect() throws DatabaseException {
-		log().info("Database: Reconnecting...");
+		// log().info("Database: Reconnecting...");
 		closeQuietly();
 		connect();
 	}
@@ -441,7 +441,9 @@ public class Database {
 	 * Log query
 	 */
 	void logQuery(String query) {
-		log.info(query);
+		if (config.logQueries) {// can log query
+			log.log(config.logQueriesLevel, query);
+		}
 	}
 
 	/**

@@ -2,6 +2,7 @@ package jss.database;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.logging.Level;
 
 import jss.database.annotations.DbTable;
 import jss.database.annotations.DbView;
@@ -37,8 +38,11 @@ public class DatabaseConfig {
 
 	// autoreconnecting
 	int autoReconnectInactiveSecs = -1;// autopołączanie po czasie nieaktywności
-	int autoReconnectAfterLastConnectionSecs = -1;// autopołączenie po czasie od nawiązania ostatniego
-															// połączenia
+	int autoReconnectAfterLastConnectionSecs = -1;// autopoł. po czasie od nawiązania ost. poł.
+
+	// logowanie
+	boolean logQueries = false;// loguj zapytania
+	Level logQueriesLevel = Level.FINEST;// poziom logowania zapytań
 
 	// konfiguracja połączenia
 	String server;
@@ -61,6 +65,28 @@ public class DatabaseConfig {
 	 */
 	public DatabaseConfig(DatabaseType dbType) {
 		this.dbType = dbType;
+	}
+
+	/**
+	 * Czy logować zapytania SQL?
+	 * 
+	 * @param logQueries should log SQL queries?
+	 * @return this object
+	 */
+	public DatabaseConfig setLogQueries(boolean logQueries) {
+		this.logQueries = logQueries;
+		return this;
+	}
+
+	/**
+	 * Poziom logowania zaytań SQL
+	 * 
+	 * @param logQueriesLevel log SQL queries level
+	 * @return this object
+	 */
+	public DatabaseConfig setLogQueriesLevel(Level logQueriesLevel) {
+		this.logQueriesLevel = logQueriesLevel;
+		return this;
 	}
 
 	/**
