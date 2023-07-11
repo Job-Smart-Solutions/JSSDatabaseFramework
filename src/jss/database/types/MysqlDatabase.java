@@ -66,12 +66,12 @@ class MysqlDatabase extends AbstractDatabase {
 
 	@Override
 	public String getConnectionString() {
-		return "jdbc:mysql://{SERVER}:{PORT}/";
+		return "jdbc:mariadb://{SERVER}:{PORT}/";
 	}
 
 	@Override
 	public String getConnectionStringWithDatabase() {
-		return "jdbc:mysql://{SERVER}:{PORT}/{DBNAME}";
+		return "jdbc:mariadb://{SERVER}:{PORT}/{DBNAME}";
 	}
 
 	@Override
