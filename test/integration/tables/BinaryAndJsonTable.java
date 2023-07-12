@@ -32,4 +32,18 @@ public class BinaryAndJsonTable {
 
 	@DbField(type = SqlType.JSON, canNull = true)
 	public String jsonFieldNullable;
+	
+	//clob
+	@DbField(type = SqlType.CLOB)
+	public String clob1;
+	
+	@DbField(type = SqlType.CLOB)
+	public char[] clob2;
+	
+	@DbField(type = SqlType.CLOB, canNull = true)
+	public String clob1nl;
+	
+	@DbField(type = SqlType.CLOB, canNull = true)
+	public char[] clob2nl;
+	
 }

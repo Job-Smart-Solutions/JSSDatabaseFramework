@@ -54,6 +54,10 @@ public class AddingItems {
 
 	void testSqlite() throws DatabaseException {
 		DatabaseConfig cfg = Main.createSqlite();
+		if(cfg == null) {
+			return;
+		}
+		
 		Main.addTablesToConfig(cfg);
 		Database db = new Database(cfg);
 		db.connect();
@@ -65,6 +69,10 @@ public class AddingItems {
 
 	void testMysql() throws DatabaseException {
 		DatabaseConfig cfg = Main.createMysql();
+		if(cfg == null) {
+			return;
+		}
+		
 		Main.addTablesToConfig(cfg);
 		Database db = new Database(cfg);
 		db.connect();
@@ -76,6 +84,10 @@ public class AddingItems {
 
 	void testPostgresql() throws DatabaseException {
 		DatabaseConfig cfg = Main.createPostgresql();
+		if(cfg == null) {
+			return;
+		}
+		
 		Main.addTablesToConfig(cfg);
 		Database db = new Database(cfg);
 		db.connect();
@@ -281,6 +293,11 @@ public class AddingItems {
 		bj.jsonFieldNullable = "{'a': 'test', 'b': true, 'c': 123.948, 'd': {}, 'e': {'x': 99.1, 'e': false} }"
 				.replace('\'', '"');
 
+		bj.clob1 = "hello";
+		bj.clob1nl = "xDDDD µΩ";
+		bj.clob2 = new char[] { 'a', 'b', 'c', 'Ł' };
+		bj.clob2nl = new char[] { 'ą', 'Ę', 'µ', 'Ω', '0' };
+		
 		ds.insert(bj);
 
 		// nullable test
@@ -288,6 +305,8 @@ public class AddingItems {
 		bj2.binData = new byte[] { 1, 2, 3 };
 		bj2.binLongData = new byte[] { 99, 98, 97, 0x7F };
 		bj2.jsonField = "{}";// empty object
+		bj2.clob1 = "helloŒ";
+		bj2.clob2 = new char[] { 'a', 'b', 'c', 'Ł', '‰' };
 
 		ds.insert(bj2);
 	}

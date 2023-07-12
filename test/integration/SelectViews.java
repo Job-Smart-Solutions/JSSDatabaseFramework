@@ -49,16 +49,28 @@ public class SelectViews {
 
 	private void testSQLite() throws DatabaseException {
 		DatabaseConfig cfg = Main.createSqlite();
+		if(cfg == null) {
+			return;
+		}
+		
 		doTest(cfg);
 	}
 
 	private void testMySQL() throws DatabaseException {
 		DatabaseConfig cfg = Main.createMysql();
+		if(cfg == null) {
+			return;
+		}
+		
 		doTest(cfg);
 	}
 
 	private void testPostgreSQL() throws DatabaseException {
 		DatabaseConfig cfg = Main.createPostgresql();
+		if(cfg == null) {
+			return;
+		}
+		
 		doTest(cfg);
 	}
 

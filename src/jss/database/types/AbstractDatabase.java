@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Properties;
 
+import jss.database.DatabaseException;
 import jss.database.FieldLister.DbFieldInfo;
 import jss.database.FieldLister.DbFieldOrViewInfo;
 
@@ -123,7 +124,7 @@ public abstract class AbstractDatabase {
 	 * @param info database field info
 	 * @return java object (nullable)
 	 */
-	public Object convertDbToObj(Object o, DbFieldOrViewInfo info) {
+	public Object convertDbToObj(Object o, DbFieldOrViewInfo info) throws DatabaseException {
 		if (o == null) {
 			return null;
 		}
@@ -176,7 +177,7 @@ public abstract class AbstractDatabase {
 	 * @param info database field info
 	 * @return database object to save (nullable)
 	 */
-	public Object convertObjToDb(Object o, DbFieldInfo info) {
+	public Object convertObjToDb(Object o, DbFieldInfo info) throws DatabaseException {
 		if (o == null) {
 			return null;
 		}

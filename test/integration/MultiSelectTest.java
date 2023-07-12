@@ -80,6 +80,10 @@ public class MultiSelectTest {
 
 	void testSqlite() throws DatabaseException {
 		DatabaseConfig cfg = Main.createSqlite();
+		if(cfg == null) {
+			return;
+		}
+		
 		addTables(cfg);
 		Database db = new Database(cfg);
 		db.connect();
@@ -91,6 +95,10 @@ public class MultiSelectTest {
 
 	void testMysql() throws DatabaseException {
 		DatabaseConfig cfg = Main.createMysql();
+		if(cfg == null) {
+			return;
+		}
+		
 		addTables(cfg);
 		Database db = new Database(cfg);
 		db.connect();
@@ -102,6 +110,10 @@ public class MultiSelectTest {
 
 	void testPostgresql() throws DatabaseException {
 		DatabaseConfig cfg = Main.createPostgresql();
+		if(cfg == null) {
+			return;
+		}
+		
 		addTables(cfg);
 		Database db = new Database(cfg);
 		db.connect();

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.postgresql.util.PGobject;
 
+import jss.database.DatabaseException;
 import jss.database.FieldLister.DbFieldInfo;
 import jss.database.FieldLister.DbFieldOrViewInfo;
 
@@ -120,7 +121,7 @@ class PostgresqlDatabase extends AbstractDatabase {
 	}
 
 	@Override
-	public Object convertObjToDb(Object o, DbFieldInfo info) {
+	public Object convertObjToDb(Object o, DbFieldInfo info) throws DatabaseException {
 		if (o == null) {
 			return null;
 		}
@@ -148,7 +149,7 @@ class PostgresqlDatabase extends AbstractDatabase {
 	}
 
 	@Override
-	public Object convertDbToObj(Object o, DbFieldOrViewInfo info) {
+	public Object convertDbToObj(Object o, DbFieldOrViewInfo info) throws DatabaseException {
 		if (o == null) {
 			return null;
 		}

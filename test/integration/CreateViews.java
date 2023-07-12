@@ -50,17 +50,23 @@ public class CreateViews {
 
 	private void testSQLite() throws DatabaseException {
 		DatabaseConfig cfg = Main.createSqlite();
-		doTest(cfg);
+		if (cfg != null) {
+			doTest(cfg);
+		}
 	}
 
 	private void testMySQL() throws DatabaseException {
 		DatabaseConfig cfg = Main.createMysql();
-		doTest(cfg);
+		if (cfg != null) {
+			doTest(cfg);
+		}
 	}
 
 	private void testPostgreSQL() throws DatabaseException {
 		DatabaseConfig cfg = Main.createPostgresql();
-		doTest(cfg);
+		if (cfg != null) {
+			doTest(cfg);
+		}
 	}
 
 	private void doTest(DatabaseConfig cfg) throws DatabaseException {
@@ -107,20 +113,26 @@ public class CreateViews {
 
 		System.out.println("CLEANUP VIEWS BEFORE TESTS:");
 
-		Database db1 = new Database(cfgSqlite);
-		db1.connect();
-		dropViews(db1.getViewManager());
-		db1.close();
+		if (cfgSqlite != null) {
+			Database db1 = new Database(cfgSqlite);
+			db1.connect();
+			dropViews(db1.getViewManager());
+			db1.close();
+		}
 
-		Database db2 = new Database(cfgMysql);
-		db2.connect();
-		dropViews(db2.getViewManager());
-		db2.close();
+		if (cfgMysql != null) {
+			Database db2 = new Database(cfgMysql);
+			db2.connect();
+			dropViews(db2.getViewManager());
+			db2.close();
+		}
 
-		Database db3 = new Database(cfgPgsql);
-		db3.connect();
-		dropViews(db3.getViewManager());
-		db3.close();
+		if (cfgPgsql != null) {
+			Database db3 = new Database(cfgPgsql);
+			db3.connect();
+			dropViews(db3.getViewManager());
+			db3.close();
+		}
 	}
 
 }

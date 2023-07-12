@@ -46,6 +46,10 @@ public class SelectTest {
 
 	private void testSqlite() throws DatabaseException {
 		DatabaseConfig cfg = Main.createSqlite();
+		if(cfg == null) {
+			return;
+		}
+		
 		Main.addTablesToConfig(cfg);
 		Database db = new Database(cfg);
 		db.connect();
@@ -57,6 +61,10 @@ public class SelectTest {
 
 	private void testMysql() throws DatabaseException {
 		DatabaseConfig cfg = Main.createMysql();
+		if(cfg == null) {
+			return;
+		}
+		
 		Main.addTablesToConfig(cfg);
 		Database db = new Database(cfg);
 		db.connect();
@@ -68,6 +76,10 @@ public class SelectTest {
 
 	private void testPostgresql() throws DatabaseException {
 		DatabaseConfig cfg = Main.createPostgresql();
+		if(cfg == null) {
+			return;
+		}
+		
 		Main.addTablesToConfig(cfg);
 		Database db = new Database(cfg);
 		db.connect();

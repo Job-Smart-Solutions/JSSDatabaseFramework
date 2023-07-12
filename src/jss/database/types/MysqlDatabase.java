@@ -1,11 +1,16 @@
 package jss.database.types;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.mariadb.jdbc.MariaDbBlob;
+
+import jss.database.DatabaseException;
 import jss.database.FieldLister.DbFieldInfo;
 import jss.database.FieldLister.DbFieldOrViewInfo;
 
@@ -66,11 +71,13 @@ class MysqlDatabase extends AbstractDatabase {
 
 	@Override
 	public String getConnectionString() {
+		// return "jdbc:mysql://{SERVER}:{PORT}/";
 		return "jdbc:mariadb://{SERVER}:{PORT}/";
 	}
 
 	@Override
 	public String getConnectionStringWithDatabase() {
+		// return "jdbc:mysql://{SERVER}:{PORT}/{DBNAME}";
 		return "jdbc:mariadb://{SERVER}:{PORT}/{DBNAME}";
 	}
 
@@ -128,7 +135,22 @@ class MysqlDatabase extends AbstractDatabase {
 	}
 
 	@Override
-	public Object convertDbToObj(Object o, DbFieldOrViewInfo info) {
+	public Object convertObjToDb(Object o, DbFieldInfo info) throws DatabaseException {
+		if (o == null) {
+			return null;
+		}
+
+		// util date must be sent as sql timestamp (for save time, not only date)
+		if (info.getNativeType().isAssignableFrom(java.util.Date.class)) {
+			java.util.Date date = (java.util.Date) o;
+			return new java.sql.Timestamp(date.getTime());
+		}
+
+		return super.convertObjToDb(o, info);
+	}
+
+	@Override
+	public Object convertDbToObj(Object o, DbFieldOrViewInfo info) throws DatabaseException {
 		if (o == null) {
 			return null;
 		}
@@ -139,6 +161,18 @@ class MysqlDatabase extends AbstractDatabase {
 			if (df.getFieldAnnotation().type() == SqlType.JSON) {
 				if (o instanceof byte[]) {// JSON as bytes array
 					return new String((byte[]) o, StandardCharsets.UTF_8);
+				}
+			}
+		}
+
+		// BLOB
+		Class<?> nativeType = info.getNativeType();
+		if (nativeType.isAssignableFrom(byte[].class)) {
+			if (o instanceof MariaDbBlob) {
+				try {
+					return ((MariaDbBlob) o).getBinaryStream().readAllBytes();
+				} catch (IOException | SQLException e) {
+					throw new DatabaseException("MySQL: Cannot read BLOB value", e);
 				}
 			}
 		}

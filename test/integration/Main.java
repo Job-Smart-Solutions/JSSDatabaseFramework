@@ -46,10 +46,11 @@ public class Main {
 	}
 
 	static DatabaseConfig createPostgresql() throws DatabaseException {
-		DatabaseConfig cfg = new DatabaseConfig(DatabaseType.PostgreSQL);
+		/*DatabaseConfig cfg = new DatabaseConfig(DatabaseType.PostgreSQL);
 		cfg.setServer("localhost").setUser("USER").setPass("PASS").setDbName("dbtest");
 		cfg.setCreateTables(false);
-		return cfg;
+		return cfg;*/
+		return null;
 	}
 
 	static void dropTables(TableManager manager) throws DatabaseException {

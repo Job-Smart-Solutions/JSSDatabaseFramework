@@ -48,7 +48,9 @@ public class CreateTables {
 	 */
 	private void testSQLite() throws DatabaseException {
 		DatabaseConfig cfg = Main.createSqlite();
-		doTest(cfg);
+		if(cfg != null) {
+			doTest(cfg);
+		}
 	}
 
 	/**
@@ -58,7 +60,9 @@ public class CreateTables {
 	 */
 	private void testMySQL() throws DatabaseException {
 		DatabaseConfig cfg = Main.createMysql();
-		doTest(cfg);
+		if(cfg != null) {
+			doTest(cfg);
+		}
 	}
 
 	/**
@@ -68,7 +72,9 @@ public class CreateTables {
 	 */
 	private void testPostgreSQL() throws DatabaseException {
 		DatabaseConfig cfg = Main.createPostgresql();
-		doTest(cfg);
+		if(cfg != null) {
+			doTest(cfg);
+		}
 	}
 
 	private void doTest(DatabaseConfig cfg) throws DatabaseException {

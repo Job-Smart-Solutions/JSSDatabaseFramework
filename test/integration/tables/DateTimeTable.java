@@ -41,4 +41,13 @@ public class DateTimeTable {
 	public short getId() {
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "DateTimeTable [id=" + id + ", utilDate=" + utilDate + ", utilDateNullable=" + utilDateNullable
+				+ ", sqlDate=" + sqlDate + ", sqlDateNullable=" + sqlDateNullable + ", sqlTime=" + sqlTime
+				+ ", sqlTimeNullable=" + sqlTimeNullable + ", sqlTimestamp=" + sqlTimestamp + ", sqlTimestampNullable="
+				+ sqlTimestampNullable + "]";
+	}
+
 }

@@ -63,6 +63,7 @@ final class DatabaseUtils {
 				e.getKey().getFieldInClass().set(obj, toSet);
 			}
 
+			System.out.println(obj);
 			return obj;
 		} catch (Exception e) {
 			throw new DatabaseException("Cannot create instance of class: " + clazz.getName(), e);

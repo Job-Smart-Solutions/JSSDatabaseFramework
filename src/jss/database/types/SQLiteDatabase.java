@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
+import jss.database.DatabaseException;
 import jss.database.FieldLister.DbFieldInfo;
 import jss.database.FieldLister.DbFieldOrViewInfo;
 
@@ -86,7 +87,7 @@ class SQLiteDatabase extends AbstractDatabase {
 	}
 
 	@Override
-	public Object convertDbToObj(Object o, DbFieldOrViewInfo info) {
+	public Object convertDbToObj(Object o, DbFieldOrViewInfo info) throws DatabaseException {
 		if (o == null) {
 			return null;
 		}
